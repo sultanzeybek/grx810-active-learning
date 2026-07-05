@@ -1,5 +1,4 @@
-# Closed-loop active learning for L-PBF calibration of GRX-810
-
+# A closed-loop active learning framework for laser powder bed fusion calibration under data scarcity
 Physics-informed Hybrid Gaussian Process Regression (Hybrid-GPR) with Constrained
 Expected Improvement (CEI) for data-efficient laser powder bed fusion (L-PBF)
 process calibration under severe data scarcity, demonstrated on NASA's GRX-810
@@ -7,9 +6,8 @@ oxide-dispersion-strengthened superalloy.
 
 This repository accompanies the paper:
 
-> S. Zeybek, G. Tarakçı, M. Coşkun, E. Koç, G. Özer,
-> "Closed-loop active learning for data-efficient laser powder bed fusion
-> calibration: a physics-informed Gaussian process framework for GRX-810",
+> S. Zeybek, G. Tarakçı, M. Coşkun, E. Koç, Y. Akyildiz, G. Özer,
+> "A closed-loop active learning framework for laser powder bed fusion calibration under data scarcity",
 > *Journal of Intelligent Manufacturing* (under review).
 
 ## What is here
