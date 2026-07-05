@@ -43,8 +43,8 @@ empirical Pareto-front extraction with Cost-Aware CEI to recommend the next buil
 
 ```bash
 pip install -r requirements.txt
-python src/reproduce_analyses.py     # prints the tables and key numbers
-python src/make_figures.py           # writes figures/ at 300 dpi
+python src/reproduce_analyses.py     
+python src/make_figures.py          
 ```
 
 `reproduce_analyses.py` reproduces the LOOCV tournament, the feature ablation
