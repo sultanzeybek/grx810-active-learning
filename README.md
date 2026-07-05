@@ -49,7 +49,7 @@ python src/make_figures.py           # writes figures/ at 300 dpi
 
 `reproduce_analyses.py` reproduces the LOOCV tournament, the feature ablation
 (<1% across all targets), the Hybrid-vs-vanilla comparison, the VED-porosity
-correlation, the cross-laboratory density check (0.204% relative error), the
+correlation, the cross-laboratory density check, the
 cost-coefficient sensitivity, and the desirability single-point recommendation.
 
 ## Dataset
