@@ -6,9 +6,8 @@ literature-anchored prior mean functions, Constrained Expected Improvement (CEI)
 and Pareto-front extraction.
 
 Reference:
-    Zeybek et al., "Closed-loop active learning for data-efficient laser powder
-    bed fusion calibration: a physics-informed Gaussian process framework for
-    GRX-810", Journal of Intelligent Manufacturing (under review).
+    Zeybek et al., "A closed-loop active learning framework for laser powder bed fusion calibration under data scarcity", 
+    Journal of Intelligent Manufacturing (under review).
 
 Usage:
     from grx810_framework import load_data, Hybrid, prior_density, prior_hardness, prior_logp
