@@ -10,21 +10,6 @@ This repository accompanies the paper:
 > "A closed-loop active learning framework for laser powder bed fusion calibration under data scarcity",
 > *Journal of Intelligent Manufacturing* (under review).
 
-## What is here
-
-```
-.
-├── data/
-│   └── builds.csv              # the seven-build seed dataset (EOS M290)
-├── src/
-│   ├── grx810_framework.py     # core library: Hybrid-GPR, priors, CEI, Pareto
-│   ├── reproduce_analyses.py   # reproduces all numerical results in the paper
-│   └── make_figures.py         # regenerates the analysis figures (300 dpi)
-├── figures/                    # generated figures
-├── requirements.txt
-└── LICENSE
-```
-
 ## Method in brief
 
 The surrogate decomposes each target as a fixed physics-informed prior mean plus a
