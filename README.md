@@ -28,8 +28,8 @@ empirical Pareto-front extraction with Cost-Aware CEI to recommend the next buil
 
 ```bash
 pip install -r requirements.txt
-python src/reproduce_analyses.py     
-python src/make_figures.py          
+python reproduce_analyses.py     
+python make_figures.py          
 ```
 
 `reproduce_analyses.py` reproduces the LOOCV tournament, the feature ablation
@@ -39,7 +39,7 @@ cost-coefficient sensitivity, and the desirability single-point recommendation.
 
 ## Dataset
 
-`data/builds.csv` contains the seven GRX-810 builds produced on an EOS M290 at the
+`builds.csv` contains the seven GRX-810 builds produced on an EOS M290 at the
 ALUTEAM facility: laser power, scan speed, hatch spacing, layer thickness,
 Archimedes density, Vickers microhardness (mean and standard deviation), and
 ZEISS cross-sectional porosity. Physics-derived features (VED, cooling-rate index,
