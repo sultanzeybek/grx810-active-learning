@@ -38,8 +38,8 @@ improvement integral, and the hardness constraint enters as a probability.
 ## Run
 
     pip install -r requirements.txt
-    ./run_all.sh               # Gaussian-process and prior-only results
-    ./run_all.sh --with-trees  # also refits the random-forest and XGBoost reference rows of Table 8
+    bash run_all.sh               # Gaussian-process and prior-only results
+    bash run_all.sh --with-trees  # also refits the random-forest and XGBoost reference rows of Table 8
 
 Random seeds are fixed (candidate grid seed 0, optimiser restarts seed 0). A full run takes
 under a minute on a laptop CPU. The files in `results/` were generated with Python 3.13,
