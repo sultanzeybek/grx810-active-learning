@@ -15,11 +15,13 @@ produce the Gaussian-process results and the code-generated figures of the paper
 |---|---|
 | `builds.csv` | Eleven builds on an EOS M290: seven seed builds (S1–S7) and four follow-up builds (A, B, C, D). Process parameters, Archimedes density, HV1 mean, SD and indent count, and optical area fraction. |
 | `hybrid_gpr.py` | The model of Sect. 2: five inputs (P, v, h, VED, Ċ), physics prior means (Table 2), constant offset β, Matérn-5/2 residual GP with ℓ ≥ 0.5, fixed noise scales, probability of feasibility (Eq. 9) and cost-aware CEI (Eq. 10). |
-| `reproduce_main.py` | LOOCV errors (Table 7), sensitivity to the lower density asymptote ρ_min, per-fold hyperparameters (Table A1), feasible region (Table 8), follow-up test and model update (Table 10), sample-size arithmetic and the value of a twelfth build. |
+| `reproduce_main.py` | LOOCV errors (Table 7), sensitivity to the lower density asymptote ρ_min, per-fold hyperparameters (Table A1), feasible region (Table 8), follow-up test and model update (Table 10) and sample-size arithmetic. |
 | `paired_errors_prior_centre.py` | Paired LOOCV errors and effect sizes (Fig. 7), and the prior-centre comparison on three datasets (Table A2, Fig. 8). |
 | `process_window.py` | Feasible-region comparison on the 10,000-candidate grid and its 151-candidate seed-hull subset (Tables 8 and 9), and Figs. 9, 10 and 12. |
 | `active_learning_replay.py` | Active-learning replay on a common test set (Sect. 4.8, Fig. 15) and LOOCV with priors re-derived inside each fold (Table 7). |
+| `noise_and_next_build.py` | Sensitivity to the density noise and the prior width (Table A3), the density-correction scenario (Sect. 5.3) and the virtual twelfth build (Table A4, Sect. 5.4). |
 | `initial_surrogate.py` | The initial surrogate that selected builds A and C, fitted to the seven seed builds, and its prediction at the four follow-up builds (Sect. 4.7.1). |
+| `fig_followup_test.py` | Fig. 13 (predictions of both GP models at the four follow-up builds). |
 | `fig_framework.py` | Fig. 1 (vector drawing). |
 | `results/` | All outputs of the scripts: tables as CSV, console summaries as TXT, figures as PDF, SVG and PNG. |
 | `run_all.sh` | Runs every script and writes the outputs to `results/`. |

@@ -2,8 +2,8 @@
 
 Run from results/:  python ../code/reproduce_main.py
 Covers: LOOCV (Table 7), feasible region (Table 8), follow-up test and model
-update (Table 10), seed vs follow-up comparison, sample-size arithmetic and the
-value of a twelfth build under different density noise.
+update (Table 10), seed vs follow-up comparison and sample-size arithmetic.
+The virtual twelfth build is in noise_and_next_build.py.
 """
 import itertools
 from pathlib import Path
@@ -136,28 +136,6 @@ def sample_size():
               f"builds per setting to separate two settings 0.03 apart: {n2:5.1f}")
 
 
-def value_of_twelfth(d, Xc, n_sim=40, seed=1):
-    rng = np.random.default_rng(seed)
-    xa = g.features([265], [1100], [0.071])
-    s0 = g.S_RHO
-    for s in (0.08, 0.04, 0.02):
-        g.S_RHO = s
-        m = g.fit_all(d)
-        _, pf_now, _, _, _ = g.acquisition(m, d, Xc)
-        mu, sd = m["rho"].predict(xa)
-        res = []
-        for _ in range(n_sim):
-            new = d[d.build == "A"].copy()
-            new["build"], new["rho"] = "A2", rng.normal(mu[0], np.sqrt(sd[0] ** 2 + s ** 2))
-            dd = pd.concat([d, new])
-            _, pf, _, _, _ = g.acquisition(g.fit_all(dd), dd, Xc)
-            res.append(pf.max())
-        res = np.array(res)
-        print(f"s_rho = {s:.2f}: max Pr now {pf_now.max():.2f}; after a replicate of A "
-              f"mean {res.mean():.2f}, share of outcomes above 0.5: {np.mean(res > .5):.2f}")
-    g.S_RHO = s0
-
-
 if __name__ == "__main__":
     d = pd.read_csv(_builds_csv())
     seed = d[d.campaign == "seed"].reset_index(drop=True)
@@ -172,4 +150,3 @@ if __name__ == "__main__":
     print("== Model update and test on the follow-up builds"); update(d, Xc); print()
     print("== Seed builds vs follow-up builds"); seed_vs_followup(d); print()
     print("== Sample size at a given density noise"); sample_size(); print()
-    print("== Value of a twelfth build (replicate of A)"); value_of_twelfth(d, Xc)
