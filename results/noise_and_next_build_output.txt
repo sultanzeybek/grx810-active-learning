@@ -1,0 +1,25 @@
+== Table A3: density noise s_rho (prior width 18) and prior width (s_rho = 0.08)
+setting           LOOCV region %  max Pr  Pr_c  top VED           top P/v/h test MAE   dMAE
+test MAE: density MAE on A, B, C, D; dMAE: zero-mean GP minus Hybrid-GPR LOOCV MAE
+s=0.04            0.078     4.44    0.75  0.83     85.6      271/1016/0.078   0.0575  0.021
+s=0.06            0.078     4.42    0.65  0.70     86.6      278/1003/0.080   0.0504  0.021
+s=0.08            0.078     4.27    0.53  0.56     86.6      278/1003/0.080   0.0404  0.021
+s=0.10            0.078     4.20    0.47  0.50     86.6      278/1003/0.080   0.0371  0.021
+s=0.08, w=12      0.072     9.14    0.78  0.82     86.6      278/1003/0.080   0.0688  0.027
+s=0.08, w=15      0.075     7.65    0.66  0.69     86.6      278/1003/0.080   0.0466  0.024
+s=0.08, w=21      0.083     0.03    0.44  0.47     86.6      278/1003/0.080   0.0363  0.016
+s=0.08, w=24      0.086     0.00    0.39  0.42     86.6      278/1003/0.080   0.0337  0.013
+
+== Sect. 5.3: readings corrected as rho (1 + delta S/V)
+S/V bar 1.015 1/mm, disc 0.663 1/mm; air layer for a 1% low reading: bar 9.9 um, disc 15.1 um
+delta =  0 um: mean density 8.355, largest Pr_feas 0.42
+delta =  5 um: mean density 8.392, largest Pr_feas 0.89
+delta = 10 um: mean density 8.429, largest Pr_feas 0.98
+
+== Table A4: virtual twelfth build with the eleven-build surrogate
+largest Pr_feas now 0.42; 40 simulated outcomes (seed 1), density and hardness drawn, 10 indents
+objective                          P/v/h   VED          rho (95% PI)   HV    Pr  d var   Sep E[max Pr] P(>0.5)
+Replicate of A            265/1100/0.071  84.8     8.395 (8.23-8.56)  282  0.42   8.2%  0.06      0.42    0.17
+Acquisition maximum       262/1094/0.071  84.6     8.395 (8.23-8.56)  282  0.42   8.3%  0.08      0.42    0.17
+Prior discrimination       199/762/0.081  81.1     8.390 (8.23-8.55)  277  0.21   8.3%  1.05      0.42    0.17
+density noise halved (0.04): largest Pr_feas now 0.63; after a build at the acquisition maximum E[max Pr] 0.70, P(>0.5) 1.00

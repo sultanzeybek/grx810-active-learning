@@ -1,0 +1,9 @@
+        noise_mae  delta_mae  delta_over_s  paired_dz  hybrid_wins  nominal_p  zero_mae  zero_lo  zero_hi  hybrid_mae  hybrid_lo  hybrid_hi
+target                                                                                                                                     
+rho       0.06383    0.02075       0.25941    0.49001            5    0.14844   0.09908  0.06311  0.14119     0.07833    0.03756    0.12683
+HV        3.14006   -0.47714      -0.12124   -0.96852            1    0.98438   5.76453  2.38272  9.24744     6.24167    2.74635    9.80433
+logp      0.21543   -0.01884      -0.06977   -0.18531            4    0.53125   0.33058  0.19063  0.49042     0.34942    0.17715    0.53870
+Density: normal approximation 25.749; paired t: 28.
+Hardness: 10 independent builds per setting, 5 indents per build.
+Hardness: 6 independent builds per setting, 10 indents per build.
+Full-box VED centroids: prior 84.48501, posterior 84.55212. In-hull counts: prior 125, posterior 48, intersection 48 of 151.

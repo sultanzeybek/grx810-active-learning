@@ -2,7 +2,8 @@
 
 Run from results/:  python ../code/reproduce_main.py
 Covers: LOOCV (Table 7), feasible region (Table 8), follow-up test and model
-update (Table 10), seed vs follow-up comparison and sample-size arithmetic.
+update (Table 10), seed vs follow-up comparison, sample-size arithmetic and the
+hardness noise from the individual indents (hardness_indents.csv).
 The virtual twelfth build is in noise_and_next_build.py.
 """
 import itertools
@@ -136,6 +137,20 @@ def sample_size():
               f"builds per setting to separate two settings 0.03 apart: {n2:5.1f}")
 
 
+def indent_noise(d):
+    """Pooled single-indent SD from the individual HV1 readings, and a check of the build means."""
+    path = _builds_csv().with_name("hardness_indents.csv")
+    hv = pd.read_csv(path)
+    agg = hv.groupby("build").HV1.agg(["mean", "std", "count"])
+    chk = d.set_index("build")[["HV", "n_indents"]].join(agg)
+    print("largest |build mean - builds.csv HV|:", round(float((chk["mean"] - chk.HV).abs().max()), 3),
+          "; indent counts match:", bool((chk["count"] == chk.n_indents).all()))
+    for name, ks in (("seed", d.build[d.campaign == "seed"]), ("follow-up", d.build[d.campaign != "seed"])):
+        a = agg.loc[list(ks)]
+        pooled = np.sqrt(((a["count"] - 1) * a["std"] ** 2).sum() / (a["count"] - 1).sum())
+        print(f"pooled single-indent SD, {name} builds: {pooled:.2f} HV")
+
+
 if __name__ == "__main__":
     d = pd.read_csv(_builds_csv())
     seed = d[d.campaign == "seed"].reset_index(drop=True)
@@ -150,3 +165,4 @@ if __name__ == "__main__":
     print("== Model update and test on the follow-up builds"); update(d, Xc); print()
     print("== Seed builds vs follow-up builds"); seed_vs_followup(d); print()
     print("== Sample size at a given density noise"); sample_size(); print()
+    print("== Hardness noise from the individual indents"); indent_noise(d); print()

@@ -1,0 +1,6 @@
+Initial surrogate fitted to the seven seed builds; prediction at the follow-up builds
+build  rho_pred     sd  rho_meas  |err|      z  HV_pred    sd  logp_pred     sd  logp_meas  P(rho>=8.40, HV>=275)
+    A     8.405  0.086     8.425 0.0198   0.23    275.4   6.6      -0.71  0.369      -0.98                   0.27
+    B     8.457  0.037     8.357 0.1002  -2.68    281.1   2.9      -0.24  0.001       0.14                   0.92
+    C     8.405  0.086     8.371 0.0340  -0.40    275.1   6.6      -0.66  0.363      -0.21                   0.27
+    D     8.381  0.086     8.335 0.0465  -0.54    275.2   6.6      -0.81  0.349      -0.39                   0.21

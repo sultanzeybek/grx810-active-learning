@@ -1,0 +1,5 @@
+full box: intersection 427, union 2507, IoU 0.17032
+seed hull: intersection 48, union 125, IoU 0.38400
+Full-box Hybrid-GPR centroid in design steps from centreline: 1.00101
+Hybrid-GPR, exact centreline: latent 0.562314, future measurement 0.444712
+Zero-mean GP, exact centreline: latent 0.332768, future measurement 0.338831

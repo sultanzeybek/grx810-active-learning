@@ -1,0 +1,4 @@
+model,hatch,cells_per_axis,passing_cells,all_cells,percent
+Zero-mean GP,0.08,401,0,160801,0.0
+Hybrid-GPR,0.08,401,8704,160801,5.412901661059322
+Prior only,0.08,401,43506,160801,27.05580189177928

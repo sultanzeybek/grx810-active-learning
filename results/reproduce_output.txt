@@ -1,0 +1,58 @@
+candidates inside the seed hull: 151 of 10000
+
+== LOOCV MAE (seven seed builds)
+                rho      HV   logp
+Hybrid-GPR    0.078   6.242  0.349
+Zero-mean GP  0.099   5.765  0.331
+Prior only    0.082  10.251  0.290 
+
+== Lower asymptote of the density prior (rho_min)
+fixed 8.20 (main model)    density MAE 0.07833
+fixed 0.97 x 8.44          density MAE 0.07719
+fold minimum (nested)      density MAE 0.08276
+fold minimum - 0.05        density MAE 0.07844
+
+== Hyperparameters over the LOOCV folds (Table A1; all values in hyperparameters_per_fold.csv)
+                     ell         sigma_f2         
+                     min     max      min      max
+target model                                      
+HV     Hybrid-GPR    0.5  0.7829  13.3645  35.4867
+       Zero-mean GP  0.5  0.7100   9.1035  30.6982
+logp   Hybrid-GPR    0.5  0.9084   0.0190   0.0869
+       Zero-mean GP  0.5  0.9054   0.0001   0.0576
+rho    Hybrid-GPR    0.5  0.6246   0.0000   0.0021
+       Zero-mean GP  0.5  0.7352   0.0000   0.0043
+
+== Feasible region at N = 7
+f* = 8.412, beta = -0.035; top candidate 278 W / 1003 mm/s / 0.080 mm (VED 86.6), Pr_feas 0.53
+model                   mean %  hull n  max latent Pr
+Hybrid-GPR                4.27      48          0.529
+Zero-mean GP              0.00       0          0.309
+Prior only               25.07     125            n/a
+Prior only, peak probability for a future measured build with five indents: 0.691
+GP region inside prior region: True; IoU(GP, prior) hull 0.38, box 0.17
+
+== Model update and test on the follow-up builds
+N = 7                          max rho 8.411  max Pr 0.53  region  4.3%  top VED 86.6  beta -0.035
+N = 8 (+A, analytic subset)    max rho 8.408  max Pr 0.60  region 10.0%  top VED 84.6  beta -0.032
+N = 11                         max rho 8.395  max Pr 0.42  region  0.0%  top VED 84.6  beta -0.045
+  test rho   MAE 0.040  z = [ 0.22 -0.62 -0.38 -0.57]
+  test HV    MAE 4.025  z = [ 1.34  0.48 -0.65 -0.06]
+  test logp  MAE 0.422  z = [-0.71  1.84  1.21  0.83]
+
+== Seed builds vs follow-up builds
+density mean seed 8.345 (SD 0.105), follow-up 8.372 (SD 0.038); difference +0.027, exact permutation p = 0.64
+both constraints met: seed 1/7, follow-up 1/4
+S2 vs its replicate B: 8.463 vs 8.357
+SD of all eleven densities 0.085; part not explained by noise 0.029 g/cm3
+
+== Sample size at a given density noise
+s = 0.0800: builds to show a 0.025 margin above 8.40:  63.3; builds per setting to separate two settings 0.03 apart: 111.6
+s = 0.0400: builds to show a 0.025 margin above 8.40:  15.8; builds per setting to separate two settings 0.03 apart:  27.9
+s = 0.0085: builds to show a 0.025 margin above 8.40:   0.7; builds per setting to separate two settings 0.03 apart:   1.3
+
+== Hardness noise from the individual indents
+largest |build mean - builds.csv HV|: 0.048 ; indent counts match: True
+pooled single-indent SD, seed builds: 8.77 HV
+pooled single-indent SD, follow-up builds: 3.03 HV
+

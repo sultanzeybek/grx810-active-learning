@@ -72,7 +72,7 @@ ax.plot(qx + cw * xs, m, color=NAVY, lw=1.0)
 t(qx + cw / 2, 101.4, "Posterior ± 1 SD")
 t(mid, 96.9, "Prior mean + offset + residual GP")
 t(mid, 93.1, "Noise: learned (initial model)", fontsize=7.3)
-t(mid, 89.5, "→ fixed from replicates (present model)", fontsize=7.3)
+t(mid, 89.5, "→ fixed scales (present model)", fontsize=7.3)
 arrow((mid, 86), (mid, 82.5))
 
 # 3 Probabilistic decision
@@ -134,8 +134,8 @@ t(L0 + 0.5, 104.0, "Measured feedback", ha="left", color=GREEN)
 
 # Proposed build 12
 box(R0, 23, R1, 56, NAVY, dashed=True); title(R0 + 2.2, 52.6, None, "Proposed build 12", NAVY, 7.8)
-t(R0 + 2.4, 47.9, "After coupon", ha="left")
-t(R0 + 2.4, 44.5, "re-measurement", ha="left")
+t(R0 + 2.4, 47.9, "With improved", ha="left")
+t(R0 + 2.4, 44.5, "density protocol", ha="left")
 t(R0 + 2.4, 39.6, "Top-ranked near A", ha="left", weight="bold")
 t(R0 + 2.4, 35.4, "P = 262 W", ha="left")
 t(R0 + 2.4, 31.6, "v = 1094 mm/s", ha="left")

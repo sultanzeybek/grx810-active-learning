@@ -14,8 +14,9 @@ produce the Gaussian-process results and the code-generated figures of the paper
 | Path | Content |
 |---|---|
 | `builds.csv` | Eleven builds on an EOS M290: seven seed builds (S1–S7) and four follow-up builds (A, B, C, D). Process parameters, Archimedes density, HV1 mean, SD and indent count, and optical area fraction. |
+| `hardness_indents.csv` | The individual HV1 readings: five indents per build and ten for build A. `reproduce_main.py` checks the build means and gives the pooled single-indent SD (8.8 HV for the seed builds). |
 | `hybrid_gpr.py` | The model of Sect. 2: five inputs (P, v, h, VED, Ċ), physics prior means (Table 2), constant offset β, Matérn-5/2 residual GP with ℓ ≥ 0.5, fixed noise scales, probability of feasibility (Eq. 9) and cost-aware CEI (Eq. 10). |
-| `reproduce_main.py` | LOOCV errors (Table 7), sensitivity to the lower density asymptote ρ_min, per-fold hyperparameters (Table A1), feasible region (Table 8), follow-up test and model update (Table 10) and sample-size arithmetic. |
+| `reproduce_main.py` | LOOCV errors (Table 7), sensitivity to the lower density asymptote ρ_min, per-fold hyperparameters (Table A1), feasible region (Table 8), follow-up test and model update (Table 10), sample-size arithmetic and the hardness noise. |
 | `paired_errors_prior_centre.py` | Paired LOOCV errors and effect sizes (Fig. 7), and the prior-centre comparison on three datasets (Table A2, Fig. 8). |
 | `process_window.py` | Feasible-region comparison on the 10,000-candidate grid and its 151-candidate seed-hull subset (Tables 8 and 9), and Figs. 9, 10 and 12. |
 | `active_learning_replay.py` | Active-learning replay on a common test set (Sect. 4.8, Fig. 15) and LOOCV with priors re-derived inside each fold (Table 7). |
@@ -30,9 +31,11 @@ produce the Gaussian-process results and the code-generated figures of the paper
 
     y_i = m(x_i) + β + δ(x_i) + ε_i,   δ ~ GP(0, k_Matérn5/2),   ε_i ~ N(0, s_i²) with s_i fixed
 
-The noise scales are fixed from replicate measurements: density uses an effective build-level
-SD of 0.08 g/cm³, hardness 8.8/√n HV for an n-indent mean, and optical porosity 0.27 decades
-for a single field. With seven builds the marginal likelihood cannot separate signal from
+The noise scales are fixed before fitting. Density uses an effective build-level SD of
+0.08 g/cm³, supported by the replicate pair S2/B and by the spread of the eleven builds.
+Hardness uses 8.8/√n HV for an n-indent mean, from the pooled single-indent SD of the seed
+builds. Optical porosity uses 0.27 decades for a single field, from the paired fields of the
+follow-up builds and the S2/B replicate. With seven builds the marginal likelihood cannot separate signal from
 noise. The initial surrogate learned a single noise variance close to zero, and at the
 replicated setting (build B) the measured density fell outside its 95% predictive interval.
 Density is the objective of the acquisition; its threshold sets the lower limit of the

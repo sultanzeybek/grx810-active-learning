@@ -1,0 +1,22 @@
+fixed priors: mean MAE of CEI minus exact random (A, C and D)
+        rho        HV      logp
+n                              
+4 -0.000410  0.026527 -0.032204
+5 -0.000416 -0.023484 -0.012655
+6  0.001085 -0.148420  0.009887
+subset priors: mean MAE of CEI minus exact random (A, C and D)
+        rho        HV      logp
+n                              
+4 -0.002622  0.036356 -0.033616
+5 -0.000226 -0.022761 -0.012655
+6  0.000750 -0.148927  0.009887
+Figure 15 uses the fixed priors. Each policy has the same 35 starts.
+Training-fold priors, seven-fold MAE:
+rho    0.082755
+HV     6.231262
+logp   0.349419
+rho: three-input MAE 0.099010, five-input MAE 0.099080, relative change +0.0707%
+HV: three-input MAE 5.769166, five-input MAE 5.764533, relative change -0.0803%
+logp: three-input MAE 0.330296, five-input MAE 0.330583, relative change +0.0870%
+Seven-build f* 8.412177, C CEI/maximum 0.570428, grid candidates above C 24/10000, joint latent probability at C 0.289150
+Eleven-build f* 8.395321
