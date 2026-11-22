@@ -13,7 +13,7 @@ produce the Gaussian-process results and the code-generated figures of the paper
 
 | Path | Content |
 |---|---|
-| `builds.csv` | Eleven builds on an EOS M290: seven seed builds (S1–S7) and four follow-up builds (A, B, C, D). Process parameters, Archimedes density, HV1 mean, SD and indent count, optical area fraction, and the laboratory label of each build. |
+| `builds.csv` | Eleven builds on an EOS M290: seven seed builds (S1–S7) and four follow-up builds (A, B, C, D). Process parameters, Archimedes density, HV1 mean, SD and indent count, and optical area fraction. |
 | `hybrid_gpr.py` | The model of Sect. 2: five inputs (P, v, h, VED, Ċ), physics prior means (Table 2), constant offset β, Matérn-5/2 residual GP with ℓ ≥ 0.5, fixed noise scales, probability of feasibility (Eq. 9) and cost-aware CEI (Eq. 10). |
 | `reproduce_main.py` | LOOCV errors (Table 7), sensitivity to the lower density asymptote ρ_min, per-fold hyperparameters (Table A1), feasible region (Table 8), follow-up test and model update (Table 10), sample-size arithmetic and the value of a twelfth build. |
 | `paired_errors_prior_centre.py` | Paired LOOCV errors and effect sizes (Fig. 7), and the prior-centre comparison on three datasets (Table A2, Fig. 8). |
@@ -46,23 +46,6 @@ under a minute on a laptop CPU. The files in `results/` were generated with Pyth
 NumPy 2.5.3, SciPy 1.18.1, pandas 3.0.5, Matplotlib 3.11.2, scikit-learn 1.9.1 and
 XGBoost 3.0.2. Last-digit differences in fitted GP parameters can occur across numerical
 environments.
-
-## Laboratory labels
-
-The laboratory files use their own names. Build A appears as 8 and build D appears as A,
-so file names must not be read as paper labels. The column `lab_label` in `builds.csv`
-gives the laboratory name of each build.
-
-| Paper | Hardness and density sheet | Optical files (ZEN) | Micro-CT report | Tensile folder |
-|---|---|---|---|---|
-| S1–S7 | 1–7 (S2 also as 2=B) | 1–7 | Scan 1–7 | 1–7 |
-| A | 8 (Validasyon) | not in the shared files | Report - 8 | 8 |
-| B | 2=B | GRX B-1, B-2 | Report - B | b |
-| C | C | GRX C-1, C-2 | Report - C | c |
-| D | A (E in a later summary sheet) | GRX A-1, A-2 | Report - A | a |
-
-For the follow-up builds, field 1 is the upper region and field 2 the lower region of the
-polished section. The tensile results are not used in the paper.
 
 ## Not included
 
