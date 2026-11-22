@@ -17,6 +17,15 @@ from scipy.stats import norm
 import hybrid_gpr as g
 
 
+def _builds_csv():
+    """Locate builds.csv next to the script or in ../data (repository layout)."""
+    here = Path(__file__).resolve().parent
+    for p in (here / "builds.csv", here.parent / "data" / "builds.csv", Path.cwd() / "builds.csv"):
+        if p.exists():
+            return p
+    raise FileNotFoundError("builds.csv not found next to the script or in ../data")
+
+
 CENTRELINE = np.array([275., 1000., .080])
 DESIGN_STEPS = np.array([50., 200., .010])
 PLANE_SIZE = 401
@@ -281,7 +290,7 @@ if __name__ == "__main__":
     parser.add_argument("--with-trees", action="store_true", help="Also refit the RF and XGBoost reference models.")
     args = parser.parse_args()
     mpl.rcParams.update({"font.family":"DejaVu Sans", "font.size":9, "pdf.fonttype":42, "svg.fonttype":"none"})
-    builds = pd.read_csv(Path(__file__).resolve().parents[1] / "data" / "builds.csv")
+    builds = pd.read_csv(_builds_csv())
     seeds = builds.loc[builds.campaign=="seed"].reset_index(drop=True)
     fitted = {"Hybrid-GPR":g.fit_all(seeds, True), "Zero-mean GP":g.fit_all(seeds, False)}
     evaluate_box(builds, seeds, fitted, args.with_trees)

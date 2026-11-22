@@ -14,6 +14,15 @@ import pandas as pd
 import hybrid_gpr as g
 
 
+def _builds_csv():
+    """Locate builds.csv next to the script or in ../data (repository layout)."""
+    here = Path(__file__).resolve().parent
+    for p in (here / "builds.csv", here.parent / "data" / "builds.csv", Path.cwd() / "builds.csv"):
+        if p.exists():
+            return p
+    raise FileNotFoundError("builds.csv not found next to the script or in ../data")
+
+
 TARGETS = ("rho", "HV", "logp")
 POLICIES = ("Random", "Maximum uncertainty", "Cost-aware CEI")
 TEST_BUILDS = ("A", "C", "D")
@@ -154,7 +163,7 @@ def nested_prior_errors(pool):
 
 def main():
     directory = Path.cwd()
-    data = pd.read_csv(Path(__file__).resolve().parents[1] / "data" / "builds.csv").set_index("build")
+    data = pd.read_csv(_builds_csv()).set_index("build")
     pool = data[data.campaign == "seed"].sort_index()
     test = data.loc[list(TEST_BUILDS)]
     detail = pd.concat([replay(pool, test, v) for v in ("fixed", "subset")], ignore_index=True)

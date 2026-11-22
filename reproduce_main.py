@@ -15,6 +15,15 @@ from scipy.stats import norm
 import hybrid_gpr as g
 
 
+def _builds_csv():
+    """Locate builds.csv next to the script or in ../data (repository layout)."""
+    here = Path(__file__).resolve().parent
+    for p in (here / "builds.csv", here.parent / "data" / "builds.csv", Path.cwd() / "builds.csv"):
+        if p.exists():
+            return p
+    raise FileNotFoundError("builds.csv not found next to the script or in ../data")
+
+
 def loocv(seed):
     out = {}
     for name, phys in (("Hybrid-GPR", True), ("Zero-mean GP", False)):
@@ -150,7 +159,7 @@ def value_of_twelfth(d, Xc, n_sim=40, seed=1):
 
 
 if __name__ == "__main__":
-    d = pd.read_csv(Path(__file__).resolve().parents[1] / "data" / "builds.csv")
+    d = pd.read_csv(_builds_csv())
     seed = d[d.campaign == "seed"].reset_index(drop=True)
     P, v, h = g.candidates()
     Xc = g.features(P, v, h)

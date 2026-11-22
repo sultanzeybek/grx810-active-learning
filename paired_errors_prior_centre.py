@@ -12,6 +12,15 @@ from scipy.stats import nct, norm, t, wilcoxon
 
 import hybrid_gpr as g
 
+
+def _builds_csv():
+    """Locate builds.csv next to the script or in ../data (repository layout)."""
+    here = Path(__file__).resolve().parent
+    for p in (here / "builds.csv", here.parent / "data" / "builds.csv", Path.cwd() / "builds.csv"):
+        if p.exists():
+            return p
+    raise FileNotFoundError("builds.csv not found next to the script or in ../data")
+
 CENTRES = tuple(range(70, 111, 5))
 TARGETS = ("rho", "HV", "logp")
 STYLES = (("rho", "Density", "#204f75", "o"), ("HV", "Hardness", "#a44c16", "s"),
@@ -200,7 +209,7 @@ def figure8(cv,regions,zero_mae):
 
 if __name__ == "__main__":
     mpl.rcParams.update({"font.family":"DejaVu Sans","font.size":8,"pdf.fonttype":42,"svg.fonttype":"none"})
-    data = pd.read_csv(Path(__file__).resolve().parents[1] / "data" / "builds.csv")
+    data = pd.read_csv(_builds_csv())
     seed = data.loc[data.campaign=="seed"].reset_index(drop=True)
     folds = paired_errors(seed)
     folds.to_csv("loocv_paired_errors.csv",index=False)

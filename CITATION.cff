@@ -1,0 +1,36 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite the paper below."
+title: "Hybrid-GPR and cost-aware CEI for L-PBF process-parameter selection (GRX-810)"
+authors:
+  - family-names: Zeybek
+    given-names: Sultan
+    orcid: "https://orcid.org/0000-0002-1298-9499"
+  - family-names: Tarakçı
+    given-names: Gürkan
+  - family-names: Coşkun
+    given-names: Mert
+  - family-names: Koç
+    given-names: Ebubekir
+  - family-names: Akyıldız
+    given-names: Yağız
+  - family-names: Özer
+    given-names: Gökhan
+license: MIT
+repository-code: "https://github.com/sultanzeybek/grx810-active-learning"
+preferred-citation:
+  type: article
+  title: "A closed-loop active learning framework for laser powder bed fusion calibration under data scarcity"
+  journal: "Journal of Intelligent Manufacturing"
+  authors:
+    - family-names: Zeybek
+      given-names: Sultan
+    - family-names: Tarakçı
+      given-names: Gürkan
+    - family-names: Coşkun
+      given-names: Mert
+    - family-names: Koç
+      given-names: Ebubekir
+    - family-names: Akyıldız
+      given-names: Yağız
+    - family-names: Özer
+      given-names: Gökhan
