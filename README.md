@@ -19,6 +19,7 @@ produce the Gaussian-process results and the code-generated figures of the paper
 | `paired_errors_prior_centre.py` | Paired LOOCV errors and effect sizes (Fig. 7), and the prior-centre comparison on three datasets (Table A2, Fig. 8). |
 | `process_window.py` | Feasible-region comparison on the 10,000-candidate grid and its 151-candidate seed-hull subset (Tables 8 and 9), and Figs. 9, 10 and 12. |
 | `active_learning_replay.py` | Active-learning replay on a common test set (Sect. 4.8, Fig. 15) and LOOCV with priors re-derived inside each fold (Table 7). |
+| `initial_surrogate.py` | The initial surrogate that selected builds A and C, fitted to the seven seed builds, and its prediction at the four follow-up builds (Sect. 4.7.1). |
 | `fig_framework.py` | Fig. 1 (vector drawing). |
 | `results/` | All outputs of the scripts: tables as CSV, console summaries as TXT, figures as PDF, SVG and PNG. |
 | `run_all.sh` | Runs every script and writes the outputs to `results/`. |
@@ -56,8 +57,9 @@ baselines of the LOOCV comparison in Table 7 are reported values and are not ref
 ## Initial surrogate
 
 The initial surrogate that selected builds A and C uses six inputs, learns its noise from
-the data and applies a hard feasibility mask. Its implementation is kept at
-[commit 50172b8](https://github.com/sultanzeybek/grx810-active-learning/tree/50172b8121545f7be053f4910ed8280bdf178b0c).
+the data and applies a hard feasibility mask. `initial_surrogate.py` contains its model
+code unchanged and prints its predictions at A, B, C and D. The original seven-build
+version of the repository is kept in the commit history.
 
 ## Citation
 
