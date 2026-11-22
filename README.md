@@ -53,12 +53,6 @@ NumPy 2.5.3, SciPy 1.18.1, pandas 3.0.5, Matplotlib 3.11.2, scikit-learn 1.9.1 a
 XGBoost 3.0.2. Last-digit differences in fitted GP parameters can occur across numerical
 environments.
 
-## Not included
-
-The micrographs (Figs. 3, 5, 6 and 14), the micro-CT indication lists and the CT reports
-are available from the corresponding author on request. The tree-ensemble and SVR
-baselines of the LOOCV comparison in Table 7 are reported values and are not refitted here.
-
 ## Initial surrogate
 
 The initial surrogate that selected builds A and C uses six inputs, learns its noise from
